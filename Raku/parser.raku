@@ -24,3 +24,23 @@ sub extract_title {
 	# Updates @tracks
 	return @tracktitles;
 }
+
+# This removes comments and parenthetical information
+sub comments {
+	if ($DEBUG) {say "<filtering comments>\n";}
+	my @filteredtitles = ();
+	
+	# This loops through each track
+	for @tracks -> $title { 
+		$_ = $title;
+
+        ## Add regex substitutions to remove superflous comments and all that follows them
+		## Assign to $_ with smartmatcher (~~)
+		# Uncomment and replace ... with a substition for ( and anything that follows
+		# $_ ~~ ...
+		
+		@filteredtitles.push: $_;   # Add edited $title to the new array of titles
+	}
+	# Updates @tracks
+	return @filteredtitles;
+}
