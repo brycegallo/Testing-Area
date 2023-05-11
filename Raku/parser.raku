@@ -44,3 +44,22 @@ sub comments {
 	# Updates @tracks
 	return @filteredtitles;
 }
+
+# This removes punctutation
+sub punctuation {
+	if ($DEBUG) {say "<filtering punctuation>\n";}
+	my @filteredtitles = ();
+	## Add regex substitutions to remove punctuation
+	
+	for @tracks -> $title { 
+		$_ = $title;
+		# Uncomment and replace ... with a substition for ?
+		# $_ ~~ ...
+
+		# Repeat for the other symbols
+
+		
+		@filteredtitles.push: $_;	# Add the edited $title to the new array of titles
+	}
+	return @filteredtitles;	# Updates @tracks	
+}

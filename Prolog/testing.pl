@@ -3,6 +3,9 @@ weather(karachi, summer, warm).
 weather(islamabad, winter, cold).
 weather(karachi, winter, warm).
 
+main :- write('This is sample Prolog program'),
+write(' This program is written into testing.pl file').
+
 /* How to Run
 ?- [testing].
     true.
@@ -14,4 +17,6 @@ weather(karachi, winter, warm).
     City = islamabad.
 ?- weather(City, _, warm).
     City = karachi.
+?- main.
+    This program is written into testing.pl file
 */
