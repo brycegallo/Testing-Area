@@ -1,6 +1,6 @@
 # pseudo-constants
-my $STOP_WORDS = 0;           # flag - filter stopwords, 0 (off) | 1 (on)
-my $DEBUG = 0;				  # flag - debug words, 0 (off) | 1 (on)
+my $STOP_WORDS = 0;         # flag - filter stopwords, 0 (off) | 1 (on)
+my $DEBUG = 0;				      # flag - debug words, 0 (off) | 1 (on)
 my $SEQUENCE_LENGTH = 10;	  # length of song title, suggested default 10
 my $FILE = "";
 
@@ -34,7 +34,7 @@ sub comments {
 	for @tracks -> $title { 
 		$_ = $title;
 
-        ## Add regex substitutions to remove superflous comments and all that follows them
+    ## Add regex substitutions to remove superflous comments and all that follows them
 		## Assign to $_ with smartmatcher (~~)
 		# Uncomment and replace ... with a substition for ( and anything that follows
 		# $_ ~~ ...
@@ -62,4 +62,53 @@ sub punctuation {
 		@filteredtitles.push: $_;	# Add the edited $title to the new array of titles
 	}
 	return @filteredtitles;	# Updates @tracks	
+}
+
+sub clean {
+	if ($DEBUG) {say "<filtering non-ASCII characters>\n";}
+	my @filteredtitles = ();
+	
+	## These are small tasks, where each "<your code here>"
+	##   will be either a regex substitution 
+	##   or an if statement and a subsequent action (e.g. skip to next without adding)
+		
+	# This loops through each track
+	for @tracks -> $title {
+	
+		## Add regex substitutions to (1) leading and trailing apostrophes.
+		##    and then (2) trim leading and trailing whitespace
+		## There will be some trailing apostrophes left after the trailing whitespace is removed
+			
+		# replace leading/trailing apostrophe
+		$_ = $title;
+
+		# Uncomment and replace ... with a substition to trim apostrophes
+		# $_ ~~ ...    # trim leading apostrophes
+		# $_ ~~ ...    # trim trailing apostrophes
+
+		# Uncomment and replace ... with a substition to trim whitespace
+		# $_ ~~ ...    # trim leading whitespace
+		# $_ ~~ ...    # trim trailing whitespace
+
+		## Filter out non-ASCII characters 
+		## (letters, numbers, apostophe, space allowed)
+
+		# Use "next;" to skip lines containing non-ASCII characters		
+	
+		## Skip title if (1) blank contains only whitespace, 
+		## or (2) contains only apostrophes
+
+		# skip if only contains whitespace
+
+		# skip if only contains only an apostrophe
+		 
+		## Set to lowercase 
+		##########################		
+		# minor edit needed to this line (raku has a handy function)
+		@filteredtitles.push: $_;
+		########################## End Task 7
+		
+	}
+	# Updates @tracks	
+	return @filteredtitles;			
 }
